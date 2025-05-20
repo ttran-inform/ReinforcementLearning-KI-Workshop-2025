@@ -5,13 +5,13 @@ from tqdm import tqdm
 import imageio
 import os
 
+# We create our environment with gym.make("<name_of_the_environment>")- `is_slippery=False`: The agent always moves in the intended direction due to the non-slippery nature of the frozen lake (deterministic).
 env = gym.make("FrozenLake-v1", map_name="4x4",
                is_slippery=False, render_mode="rgb_array")
 
-# We create our environment with gym.make("<name_of_the_environment>")- `is_slippery=False`: The agent always moves in the intended direction due to the non-slippery nature of the frozen lake (deterministic).
 print("_____OBSERVATION SPACE_____ \n")
 print("Observation Space", env.observation_space)
-# Get a random observation
+print("\n _____ACTION SPACE_____ \n")
 print("Sample observation", env.observation_space.sample())
 state_space = env.observation_space.n
 print("There are ", state_space, " possible states")
@@ -19,9 +19,8 @@ print("There are ", state_space, " possible states")
 action_space = env.action_space.n
 print("There are ", action_space, " possible actions")
 
-# Let's create our Qtable of size (state_space, action_space) and initialized each values at 0 using np.zeros
 
-
+# Create Qtable of size (state_space, action_space) and initialized each values at 0 using np.zeros
 def initialize_q_table(state_space, action_space):
     Qtable = np.zeros((state_space, action_space))
     return Qtable
@@ -70,7 +69,7 @@ eval_seed = []               # The evaluation seed of the environment
 # Exploration parameters
 max_epsilon = 1.0             # Exploration probability at start
 min_epsilon = 0.05            # Minimum exploration probability
-decay_rate = 0.0005            # Exponential decay rate for exploration prob
+decay_rate = 0.0005           # Exponential decay rate for exploration prob
 
 
 def train(n_training_episodes, min_epsilon, max_epsilon, decay_rate, env, max_steps, Qtable):

@@ -8,3 +8,5 @@ pygame
 numpy
 tqdm
 imageio
+
+ipykernel
