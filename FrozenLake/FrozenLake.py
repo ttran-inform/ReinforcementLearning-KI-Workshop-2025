@@ -9,9 +9,7 @@ import os
 env = gym.make("FrozenLake-v1", map_name="4x4",
                is_slippery=False, render_mode="rgb_array")
 
-print("_____OBSERVATION SPACE_____ \n")
 print("Observation Space", env.observation_space)
-print("\n _____ACTION SPACE_____ \n")
 print("Sample observation", env.observation_space.sample())
 state_space = env.observation_space.n
 print("There are ", state_space, " possible states")
@@ -54,7 +52,7 @@ def epsilon_greedy_policy(Qtable, state, epsilon):
 
 
 # Training parameters
-n_training_episodes = 10000  # Total training episodes
+n_training_episodes = 1000      # Total training episodes
 learning_rate = 0.7          # Learning rate
 
 # Evaluation parameters
@@ -75,8 +73,8 @@ decay_rate = 0.0005           # Exponential decay rate for exploration prob
 def train(n_training_episodes, min_epsilon, max_epsilon, decay_rate, env, max_steps, Qtable):
     for episode in tqdm(range(n_training_episodes)):
         # Reduce epsilon (because we need less and less exploration)
-        epsilon = min_epsilon + (max_epsilon - min_epsilon) * \
-            np.exp(-decay_rate*episode)
+        epsilon = min_epsilon + \
+            (max_epsilon - min_epsilon) * np.exp(-decay_rate*episode)
         # Reset the environment
         state, info = env.reset()
         step = 0

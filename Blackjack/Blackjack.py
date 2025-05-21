@@ -57,8 +57,8 @@ def epsilon_greedy_policy(Qtable, state, epsilon):
 
 
 # Training parameters
-# Total training episodes (Blackjack needs more episodes)
-n_training_episodes = 500000
+# Total training episodes
+n_training_episodes = 5000
 learning_rate = 0.1           # Learning rate
 max_steps = 100               # Max steps per episode
 gamma = 0.95                  # Discounting rate
@@ -218,7 +218,7 @@ def record_video(env, Qtable, out_directory, fps=1, num_episodes=3):
 
 # Record videos of agent playing
 video_directory = "Blackjack/videos/blackjack.gif"
-record_video(env, Qtable_blackjack, video_directory, fps=2, num_episodes=3)
+record_video(env, Qtable_blackjack, video_directory, fps=2, num_episodes=5)
 
 env.close()
 

@@ -7,9 +7,10 @@ import os
 
 env = gym.make("Taxi-v3", render_mode="rgb_array")
 
-state_space = env.observation_space.n
+# TODO : Print the observation space and action space
+state_space =
 print("There are ", state_space, " possible states")
-action_space = env.action_space.n
+action_space =
 print("There are ", action_space, " possible actions")
 
 
@@ -18,7 +19,8 @@ def initialize_q_table(state_space, action_space):
     return Qtable
 
 
-Qtable_taxi = initialize_q_table(state_space, action_space)
+# TODO : Initialize the Q-table
+Qtable_taxi =
 print(Qtable_taxi)
 print("Q-table shape: ", Qtable_taxi .shape)
 
@@ -46,7 +48,7 @@ def epsilon_greedy_policy(Qtable, state, epsilon):
 
 
 # Training parameters
-n_training_episodes = 25000   # Total training episodes
+n_training_episodes = 1   # Total training episodes
 learning_rate = 0.7           # Learning rate
 
 # Evaluation parameters
@@ -103,8 +105,8 @@ def train(n_training_episodes, min_epsilon, max_epsilon, decay_rate, env, max_st
     return Qtable
 
 
-Qtable_taxi = train(n_training_episodes, min_epsilon,
-                    max_epsilon, decay_rate, env, max_steps, Qtable_taxi)
+# TODO : Q-learning Training
+Qtable_taxi =
 
 
 print(Qtable_taxi)

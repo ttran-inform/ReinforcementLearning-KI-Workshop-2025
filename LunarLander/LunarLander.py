@@ -9,6 +9,8 @@ from gymnasium.wrappers import RecordVideo  # Wrapper zum Aufzeichnen von Videos
 env = make_vec_env('LunarLander-v2', n_envs=16)
 
 # Initialisiere das PPO-Modell mit den gewünschten Hyperparametern
+# PPO ist eine Kombination aus: Value-based reinforcement learning & Policy-based reinforcement learning method
+
 model = PPO(
     policy='MlpPolicy',    # Wähle eine mehrschichtige Wahrnehmungspolicy (MLP)
     env=env,               # Übergib die Vektor-Umgebung
